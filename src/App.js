@@ -6,7 +6,8 @@ import Products from "./containers/Products";
 import axios from "./axios";
 class App extends Component {
   state = {
-    information: null
+    information: [],
+    
   };
 
 
@@ -16,7 +17,7 @@ class App extends Component {
     for (const id in response.data) {
       information.push({
         id,
-        ...response.data.information.content[id]
+        ...response.data.information[id]
       });
     }
     this.setState({
@@ -25,9 +26,9 @@ class App extends Component {
    }); 
    }
 
-  renderObject() {Object.keys(this.state.information.content,this.state.information.price).map(function(key) {
-    return <div>Key: {key}, Value: {this.state.content[key]}</div>;
-})}
+  //***renderObject() {Object.keys(this.state.information.content).map(function(key) {
+    ///return <div>Key: {key}, Value: {this.state.content[key]}</div>;
+//})}///***
   
 
   render() {
@@ -36,8 +37,8 @@ class App extends Component {
     return (
       <div className={classes.App}>
         <Navigation />
-        {this.state.information.content}
-      </div>
+       <p>{this.state.information}</p>    
+       </div>
     );
   }
 }
