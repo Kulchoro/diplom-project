@@ -1,31 +1,42 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+
 import classes from "./App.module.css";
 import Navigation from "./components/Navigation/Navigation";
 import Products from "./containers/Products";
 import axios from "./axios";
 class App extends Component {
   state = {
-    information: []
+    information: null
   };
 
-  componentDidMount() {
+
+ componentDidMount() {
     axios.get("information.json").then(response => {
-      console.log(response.data);
-      this.setState({
-        information: response.data
+      const information = [];
+    for (const id in response.data) {
+      information.push({
+        id,
+        ...response.data.information.content[id]
       });
-    });
-  }
+    }
+    this.setState({
+     information
+   })
+   }); 
+   }
+
+  renderObject() {Object.keys(this.state.information.content,this.state.information.price).map(function(key) {
+    return <div>Key: {key}, Value: {this.state.content[key]}</div>;
+})}
+  
+
   render() {
+  
     
     return (
       <div className={classes.App}>
-       
-          <Navigation />
-         
-          {this.state.information}
-        
+        <Navigation />
+        {this.state.information.content}
       </div>
     );
   }
