@@ -7,37 +7,32 @@ import axios from "./axios";
 class App extends Component {
   state = {
     information: [],
-    
+    id:[]
   };
 
 
- componentDidMount() {
-    axios.get("information.json").then(response => {
-      const information = [];
-    for (const id in response.data) {
-      information.push({
-        id,
-        ...response.data.information[id]
+  componentDidMount() {
+    axios.get('information.json')
+      .then(response => {
+        this.setState({
+          information: response.data
+        });
       });
-    }
-    this.setState({
-     information
-   })
-   }); 
-   }
+  }
 
-  //***renderObject() {Object.keys(this.state.information.content).map(function(key) {
-    ///return <div>Key: {key}, Value: {this.state.content[key]}</div>;
-//})}///***
   
-
   render() {
-  
-    
+    const information = this.state.information;
+    const hitozan = this.state.information;
+    let res = Object.keys(this.state.information).map(function(key){
+      return [+key, information[key], hitozan[key], information.content[key], information.price[key]];
+        })
+        console.log(res)
     return (
       <div className={classes.App}>
         <Navigation />
-       <p>{this.state.information}</p>    
+       
+      
        </div>
     );
   }

@@ -6,6 +6,11 @@ function Navigation(props) {
     <div className={classes.Navigation}>
        <nav>
           <ul>
+          <li>
+              <a>
+               About shop
+              </a>
+            </li>
             <li>
               <a>
                Products
