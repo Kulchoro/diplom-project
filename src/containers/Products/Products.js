@@ -22,7 +22,9 @@ class Products extends Component {
 
     return (
       <div className={classes.Products}>
+        <div>Cart:{this.state.cart}</div>
         <div>
+          <h5>Product #1</h5>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos
           animi ipsum facilis recusandae esse ab sunt consequatur incidunt,
           voluptate velit praesentium quod repudiandae minima modi vel nemo
@@ -31,6 +33,7 @@ class Products extends Component {
           <button>Add cart</button>
         </div>
         <div>
+          <h5>Product #2</h5>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos
           animi ipsum facilis recusandae esse ab sunt consequatur incidunt,
           voluptate velit praesentium quod repudiandae minima modi vel nemo
@@ -39,6 +42,7 @@ class Products extends Component {
           <button>Add cart</button>
         </div>
         <div>
+          <h5>Product #3</h5>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos
           animi ipsum facilis recusandae esse ab sunt consequatur incidunt,
           voluptate velit praesentium quod repudiandae minima modi vel nemo
@@ -47,6 +51,7 @@ class Products extends Component {
           <button>Add cart</button>
         </div>
         <div>
+          <h5>Product #4</h5>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos
           animi ipsum facilis recusandae esse ab sunt consequatur incidunt,
           voluptate velit praesentium quod repudiandae minima modi vel nemo
@@ -55,6 +60,7 @@ class Products extends Component {
           <button>Add cart</button>
         </div>
         <div>
+          <h5>Product #5</h5>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos
           animi ipsum facilis recusandae esse ab sunt consequatur incidunt,
           voluptate velit praesentium quod repudiandae minima modi vel nemo
@@ -63,6 +69,7 @@ class Products extends Component {
           <button>Add cart</button>
         </div>
         <div>
+          <h5>Product #6</h5>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos
           animi ipsum facilis recusandae esse ab sunt consequatur incidunt,
           voluptate velit praesentium quod repudiandae minima modi vel nemo
