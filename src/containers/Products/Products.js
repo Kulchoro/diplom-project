@@ -1,0 +1,66 @@
+import React, { Component } from "react";
+import classes from "./Products.module.css";
+import axios from "../../axios";
+
+class Products extends Component {
+  state = {
+    price: 0,
+    cart:[]
+  };
+  componentDidMount() {
+    axios.get("information.json").then(response => {
+      this.setState({
+        price: response.data
+      });
+    });
+  }
+  render() {
+    const price = this.state.price;
+    let res = Object.keys(this.state.price).map(function(key) {
+      return [price[key]];
+    });
+
+    return (
+      <div className={classes.Products}>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos
+          animi ipsum facilis recusandae esse ab sunt consequatur incidunt,
+          voluptate velit praesentium quod repudiandae minima modi vel nemo
+          corrupti hic aspernatur. Price: {res}
+        </p>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos
+          animi ipsum facilis recusandae esse ab sunt consequatur incidunt,
+          voluptate velit praesentium quod repudiandae minima modi vel nemo
+          corrupti hic aspernatur. Price: {res}
+        </p>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos
+          animi ipsum facilis recusandae esse ab sunt consequatur incidunt,
+          voluptate velit praesentium quod repudiandae minima modi vel nemo
+          corrupti hic aspernatur. Price: {res}
+        </p>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos
+          animi ipsum facilis recusandae esse ab sunt consequatur incidunt,
+          voluptate velit praesentium quod repudiandae minima modi vel nemo
+          corrupti hic aspernatur. Price: {res}
+        </p>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos
+          animi ipsum facilis recusandae esse ab sunt consequatur incidunt,
+          voluptate velit praesentium quod repudiandae minima modi vel nemo
+          corrupti hic aspernatur. Price: {res}
+        </p>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos
+          animi ipsum facilis recusandae esse ab sunt consequatur incidunt,
+          voluptate velit praesentium quod repudiandae minima modi vel nemo
+          corrupti hic aspernatur. Price: {res}
+        </p>
+      </div>
+    );
+  }
+}
+
+export default Products;
