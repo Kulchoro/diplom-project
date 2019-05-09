@@ -1,15 +1,15 @@
-.Navigation nav{
+.Navigation nav {
   display: flex;
   justify-content: flex-end;
   background-color: rgb(58, 68, 68);
   padding: 15px;
 }
-.Navigation nav li{
+.Navigation nav li {
   list-style-type: none;
   display: inline;
   cursor: pointer;
 }
-.Navigation nav li a{
+.Navigation nav li a {
   position: relative;
   width: 100%;
   height: 20px;
@@ -25,10 +25,13 @@ ul li a::after {
   position: absolute;
   bottom: 0px;
   left: 50%;
-  transition: all .6s;
+  transition: all 0.6s;
+}
+Link{
+  text-decoration: none;
 }
 ul li a:hover::after {
   width: 100%;
   left: 0;
-  transition: all .3s;
+  transition: all 0.3s;
 }

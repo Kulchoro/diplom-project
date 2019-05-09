@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import classes from "./Products.module.css";
 import axios from "../../axios";
-
+import { Route } from "react-router-dom";
 class Products extends Component {
   state = {
     price: 0,
-    cart:[]
+    cart: []
   };
   componentDidMount() {
     axios.get("information.json").then(response => {
@@ -22,42 +22,43 @@ class Products extends Component {
 
     return (
       <div className={classes.Products}>
-        <p>
+        <div>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos
           animi ipsum facilis recusandae esse ab sunt consequatur incidunt,
           voluptate velit praesentium quod repudiandae minima modi vel nemo
           corrupti hic aspernatur. Price: {res}
-        </p>
-        <p>
+        </div>
+        <div>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos
           animi ipsum facilis recusandae esse ab sunt consequatur incidunt,
           voluptate velit praesentium quod repudiandae minima modi vel nemo
           corrupti hic aspernatur. Price: {res}
-        </p>
-        <p>
+        </div>
+        <div>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos
           animi ipsum facilis recusandae esse ab sunt consequatur incidunt,
           voluptate velit praesentium quod repudiandae minima modi vel nemo
           corrupti hic aspernatur. Price: {res}
-        </p>
-        <p>
+        </div>
+        <div>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos
           animi ipsum facilis recusandae esse ab sunt consequatur incidunt,
           voluptate velit praesentium quod repudiandae minima modi vel nemo
           corrupti hic aspernatur. Price: {res}
-        </p>
-        <p>
+        </div>
+        <div>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos
           animi ipsum facilis recusandae esse ab sunt consequatur incidunt,
           voluptate velit praesentium quod repudiandae minima modi vel nemo
           corrupti hic aspernatur. Price: {res}
-        </p>
-        <p>
+        </div>
+        <div>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos
           animi ipsum facilis recusandae esse ab sunt consequatur incidunt,
           voluptate velit praesentium quod repudiandae minima modi vel nemo
           corrupti hic aspernatur. Price: {res}
-        </p>
+        </div>
+        <Route path="/products" render={() => <strong>Hello!</strong>} />
       </div>
     );
   }

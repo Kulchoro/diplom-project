@@ -1,33 +1,30 @@
-import React from 'react';
-import classes from './Navigation.module.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import classes from "./Navigation.module.css";
 
 function Navigation(props) {
   return (
     <div className={classes.Navigation}>
-       <nav>
-          <ul>
+      <nav>
+        <ul>
           <li>
-              <a>
-               About shop
-              </a>
-            </li>
-            <li>
-              <a>
-               Products
-              </a>
-            </li>
-            <li>
-              <a>
-              Checkout
-              </a>
-            </li>
-            <li>
-              <a>
-             Contacts
-              </a>
-            </li>
-          </ul>
-        </nav>
+            <Link to="/">About</Link>
+          </li>
+          <li>
+            <Link to="/products">Products</Link>
+          </li>
+          <li>
+            <Link
+              to={{
+                pathname: "/services",
+                hash: "elaman"
+              }}
+            >
+              Contact
+            </Link>
+          </li>
+        </ul>
+      </nav>
     </div>
   );
 }
