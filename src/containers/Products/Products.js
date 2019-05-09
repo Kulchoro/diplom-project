@@ -27,36 +27,48 @@ class Products extends Component {
           animi ipsum facilis recusandae esse ab sunt consequatur incidunt,
           voluptate velit praesentium quod repudiandae minima modi vel nemo
           corrupti hic aspernatur. Price: {res}
+          <button>Checkout</button>
+          <button>Add cart</button>
         </div>
         <div>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos
           animi ipsum facilis recusandae esse ab sunt consequatur incidunt,
           voluptate velit praesentium quod repudiandae minima modi vel nemo
           corrupti hic aspernatur. Price: {res}
+          <button>Checkout</button>
+          <button>Add cart</button>
         </div>
         <div>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos
           animi ipsum facilis recusandae esse ab sunt consequatur incidunt,
           voluptate velit praesentium quod repudiandae minima modi vel nemo
           corrupti hic aspernatur. Price: {res}
+          <button>Checkout</button>
+          <button>Add cart</button>
         </div>
         <div>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos
           animi ipsum facilis recusandae esse ab sunt consequatur incidunt,
           voluptate velit praesentium quod repudiandae minima modi vel nemo
           corrupti hic aspernatur. Price: {res}
+          <button>Checkout</button>
+          <button>Add cart</button>
         </div>
         <div>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos
           animi ipsum facilis recusandae esse ab sunt consequatur incidunt,
           voluptate velit praesentium quod repudiandae minima modi vel nemo
           corrupti hic aspernatur. Price: {res}
+          <button>Checkout</button>
+          <button>Add cart</button>
         </div>
         <div>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos
           animi ipsum facilis recusandae esse ab sunt consequatur incidunt,
           voluptate velit praesentium quod repudiandae minima modi vel nemo
           corrupti hic aspernatur. Price: {res}
+          <button>Checkout</button>
+          <button>Add cart</button>
         </div>
         <Route path="/products" render={() => <strong>Hello!</strong>} />
       </div>
