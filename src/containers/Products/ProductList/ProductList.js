@@ -1,12 +1,11 @@
 import React from "react";
 import classes from "./ProductList.module.css";
-
+import ProductControl from "../ProductControl/ProductControl"
 function ProductList(props) {
   return (
     <div className={classes.ProductList}>
-      <p>{props.products}</p>
-      <button>CheckOut</button>
-      <button>Add cart</button>
+     <div>{props.products}</div> 
+      <ProductControl />
     </div>
   );
 }

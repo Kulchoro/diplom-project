@@ -6,7 +6,7 @@ import ProductList from "./ProductList/ProductList";
 class Products extends Component {
   state = {
     products: [],
-    cart: 0
+    cart: []
   };
 
   componentDidMount() {
@@ -16,24 +16,30 @@ class Products extends Component {
       });
     });
   }
+
   render() {
-    const products = this.state.products;
+    let products = this.state.products;
     let result = Object.keys(products).map(function(key) {
       return [
-        [
-          <h3>{products[key].name}</h3>,
-          <p>
-            {products[key].description} Price: {products[key].price}
-          </p>
-         
-        ]
+        <h3>{products[key].name}</h3>,
+        <p>
+          {[
+            products[key].description,
+            <strong> Price: {products[key].price}</strong>
+          ]}
+        </p>,
+        <ProductList key={products.id} />
       ];
     });
 
     return (
       <div className={classes.Products}>
         <div>Cart: {this.state.cart}</div>
-        <div>{result}</div>
+
+        <div>
+          <ProductList products={result} />
+        </div>
+
         <Route path="/products" />
       </div>
     );
