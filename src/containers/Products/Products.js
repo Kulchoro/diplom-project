@@ -16,16 +16,24 @@ class Products extends Component {
       });
     });
   }
-
   render() {
     const products = this.state.products;
     let result = Object.keys(products).map(function(key) {
-      return products[key]
+      return [
+        [
+          <h3>{products[key].name}</h3>,
+          <p>
+            {products[key].description} Price: {products[key].price}
+          </p>
+         
+        ]
+      ];
     });
+
     return (
       <div className={classes.Products}>
-        <div>Cart:{this.state.cart}</div>
-        <ProductList product={this.state.products} />
+        <div>Cart: {this.state.cart}</div>
+        <div>{result}</div>
         <Route path="/products" />
       </div>
     );
