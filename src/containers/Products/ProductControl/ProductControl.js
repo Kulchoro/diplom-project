@@ -1,13 +1,12 @@
 import React from 'react';
-import classes from './ProductConrtol.module.css';
+import classes from './ProductControl.module.css';
 
-function ProductConrtol(props) {
+function ProductControl(props) {
   return (
-    <div className={classes.ProductConrtol}>
-      <button>CheckOut</button>
-      <button>Add cart</button>
+    <div className={classes.ProductControl}>
+      
     </div>
   );
 }
 
-export default ProductConrtol;
+export default ProductControl;

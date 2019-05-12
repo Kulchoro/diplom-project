@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import classes from "./Products.module.css";
 import axios from "../../axios";
 import { Route } from "react-router-dom";
-import ProductList from "./ProductList/ProductList";
+
+import ProductList from "../../components/ProductList/ProductList";
 class Products extends Component {
   state = {
     products: [],
-    cart: []
+    cart: 0,
+    disabled: false
   };
 
   componentDidMount() {
@@ -16,8 +18,13 @@ class Products extends Component {
       });
     });
   }
-
+  addScoreCart = () => {
+    this.setState({
+      cart: this.state.cart + 1
+    });
+  };
   render() {
+    let addScoreCart = this.addScoreCart;
     let products = this.state.products;
     let result = Object.keys(products).map(function(key) {
       return [
@@ -28,7 +35,9 @@ class Products extends Component {
             <strong> Price: {products[key].price}</strong>
           ]}
         </p>,
-        <ProductList key={products.id} />
+        <button>CheckOut</button>,
+        <button onClick={addScoreCart}>Add cart</button>,
+        <ProductList />
       ];
     });
 
@@ -37,7 +46,7 @@ class Products extends Component {
         <div>Cart: {this.state.cart}</div>
 
         <div>
-          <ProductList products={result} />
+          <ProductList products={result} addCart={this.addScoreCart} />
         </div>
 
         <Route path="/products" />
