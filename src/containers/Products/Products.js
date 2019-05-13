@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import classes from "./Products.module.css";
 import axios from "../../axios";
-import { Route } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
 
 import ProductList from "../../components/ProductList/ProductList";
+import ProductControl from "./ProductControl/ProductControl";
 class Products extends Component {
   state = {
     products: [],
-    cart: 0
+    cart: 0,
+    itemsCart: []
   };
 
   componentDidMount() {
@@ -17,12 +20,22 @@ class Products extends Component {
       });
     });
   }
-  addScoreCart = () => {
+
+  addScoreCart = (id, name, price) => {
+    console.log(id);
+    const item = [...this.props.itemsCart];
+    item.push({
+      name: name,
+      price: price,
+      id: id
+    });
     this.setState({
       cart: this.state.cart + 1
     });
+    this.props.onItemsCartChange(item);
   };
   render() {
+    console.log(this.props.itemsCart);
     const addScoreCart = this.addScoreCart;
     let products = this.state.products;
     let result = Object.keys(products).map(function(key) {
@@ -35,20 +48,46 @@ class Products extends Component {
               <strong> Price: {products[key].price}</strong>
             ]}
           </p>
+          <ProductControl
+            addScoreCart={() =>
+              addScoreCart(
+                products[key].id,
+                products[key].name,
+                products[key].price
+              )
+            }
+          />
         </ProductList>
       ];
     });
 
     return (
       <div className={classes.Products}>
-        <div>Cart: {this.state.cart}</div>
+        <div>
+          <NavLink activeClassName={classes.active} to={"/cart/"}>
+            Cart: {this.state.cart}
+          </NavLink>
+        </div>
 
         <div>{result}</div>
-
-        <Route path="/products" />
       </div>
     );
   }
 }
 
-export default Products;
+const mapStateToProps = state => {
+  return {
+    itemsCart: state.itemsCart
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onItemsCartChange: value => dispatch({ type: "CHANGE", value })
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Products);
