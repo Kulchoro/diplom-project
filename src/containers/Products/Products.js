@@ -7,8 +7,7 @@ import ProductList from "../../components/ProductList/ProductList";
 class Products extends Component {
   state = {
     products: [],
-    cart: 0,
-    disabled: false
+    cart: 0
   };
 
   componentDidMount() {
@@ -24,20 +23,19 @@ class Products extends Component {
     });
   };
   render() {
-    let addScoreCart = this.addScoreCart;
+    const addScoreCart = this.addScoreCart;
     let products = this.state.products;
     let result = Object.keys(products).map(function(key) {
       return [
-        <h3>{products[key].name}</h3>,
-        <p>
-          {[
-            products[key].description,
-            <strong> Price: {products[key].price}</strong>
-          ]}
-        </p>,
-        <button>CheckOut</button>,
-        <button onClick={addScoreCart}>Add cart</button>,
-        <ProductList />
+        <ProductList addScoreCart={addScoreCart}>
+          <h3>{products[key].name}</h3>
+          <p>
+            {[
+              products[key].description,
+              <strong> Price: {products[key].price}</strong>
+            ]}
+          </p>
+        </ProductList>
       ];
     });
 
@@ -45,9 +43,7 @@ class Products extends Component {
       <div className={classes.Products}>
         <div>Cart: {this.state.cart}</div>
 
-        <div>
-          <ProductList products={result} addCart={this.addScoreCart} />
-        </div>
+        <div>{result}</div>
 
         <Route path="/products" />
       </div>
