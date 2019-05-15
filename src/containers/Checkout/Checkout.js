@@ -46,7 +46,7 @@ class Checkout extends Component {
       order.customer.address.length > 5
     ) {
       axios.post("orders.json", order).then(response => {
-        if (response.status === 200) {
+        if (response.status === 0) {
           this.props.history.replace("/orders");
         }
       });
