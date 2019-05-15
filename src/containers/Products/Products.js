@@ -27,15 +27,15 @@ class Products extends Component {
     item.push({
       name: name,
       price: price,
-      id: id
+      id: item.length
     });
     this.setState({
       cart: this.state.cart + 1
     });
     this.props.onItemsCartChange(item);
+    console.log(item.length);
   };
   render() {
-    console.log(this.props.itemsCart);
     const addScoreCart = this.addScoreCart;
     let products = this.state.products;
     let result = Object.keys(products).map(function(key) {

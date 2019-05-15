@@ -1,32 +1,28 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import classes from "./Cart.module.css";
 
-function Cart(props) {
-  let item = props.itemsCart.map(item => {
-    return (
-      <div>
-        <h1>{item.name}</h1>
-        <p>{item.price}</p>
-        <button
-          value={item.id}
-          onClick={event =>
-            event.target.parentElement.parentElement.children.map(i => {
-              if (i === event.target.parentElement) {
-                console.log(true);
-              } else {
-                console.log(false);
-              }
-            })
-          }
-        >
-          Del
-        </button>
-      </div>
-    );
-  });
-  return <div className={classes.Cart}>{item}</div>;
+class Cart extends Component {
+  del = index => {
+    let array = [...this.props.itemsCart];
+    array.splice(index, 1);
+    this.props.onItemsCartChange(array);
+  };
+  render() {
+    let item = this.props.itemsCart.map(item => {
+      return (
+        <div>
+          <h3>{item.name}</h3>
+          <p>Price: {item.price}</p>
+          <button value={item.id} onClick={this.del}>
+            X
+          </button>
+        </div>
+      );
+    });
+    return <div className={classes.Cart}>{item}</div>;
+  }
 }
 
 const mapStateToProps = state => {
@@ -35,7 +31,13 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    onItemsCartChange: value => dispatch({ type: "CHANGE", value })
+  };
+};
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(Cart);
