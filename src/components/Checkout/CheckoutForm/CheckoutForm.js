@@ -7,7 +7,7 @@ function CheckoutForm(props) {
       <h3>Checkout</h3>
 
       <label>
-        Name:{" "}
+        Name:
         <input
           type="text"
           placeholder="e.g. Bakyt"
@@ -15,7 +15,7 @@ function CheckoutForm(props) {
         />
       </label>
       <label>
-        Phone:{" "}
+        Phone:
         <input
           type="text"
           placeholder="e.g. 0 555 123 456"
@@ -23,13 +23,15 @@ function CheckoutForm(props) {
         />
       </label>
       <label>
-        Address:{" "}
+        Address:
         <input
           type="text"
           placeholder="e.g. 150 Karasaeva str."
           onChange={event => props.changeHandler("address", event.target.value)}
         />
       </label>
+      <button onClick={props.submitHandler}>Submit</button>
+      <button onClick={props.cancelHandler}>Cancel</button>
     </div>
   );
 }

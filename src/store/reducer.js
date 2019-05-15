@@ -1,4 +1,10 @@
 const initialState = {
+  products: {
+    product1: {},
+    product2: {},
+    product3: {}
+  },
+  price: 0,
   itemsCart: []
 };
 
