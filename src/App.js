@@ -5,6 +5,7 @@ import Navigation from "./components/Navigation/Navigation";
 import Products from "./containers/Products/Products";
 import About from "./components/About/About";
 import Cart from "./components/Cart/Cart";
+import Checkout from "./containers/Checkout/Checkout";
 class App extends Component {
   render() {
     return (
@@ -13,7 +14,7 @@ class App extends Component {
           <Navigation />
           <Route path="/" exact component={About} />
           <Route path="/products" component={Products} />
-
+          <Route path="/checkout" component={Checkout} />
           <Route path="/cart" component={Cart} />
         </div>
       </BrowserRouter>
