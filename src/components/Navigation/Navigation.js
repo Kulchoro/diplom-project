@@ -16,12 +16,14 @@ function Navigation(props) {
           <li>
             <Link
               to={{
-                pathname: "/services",
-                hash: "elaman"
+                pathname: "/contacts"
               }}
             >
               Contact
             </Link>
+          </li>
+          <li>
+            <Link url="/orders">Orders</Link>
           </li>
         </ul>
       </nav>
