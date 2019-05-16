@@ -15,6 +15,24 @@ const reducer = (state = initialState, action) => {
         ...state,
         itemsCart: action.value
       };
+    case "ADD_INGREDIENT":
+      return {
+        ...state,
+        products: {
+          ...state.products,
+          [action.product]: state.products[action.product] + 1
+        },
+        price: state.price + action.information[action.product].price
+      };
+
+    case "REMOVE_INGREDIENT":
+      const newState = { ...state };
+      newState.products = { ...state.products };
+      newState.products[action.product] = state.products[action.product] - 1;
+      newState.price = state.price - action.information[action.product].price;
+
+      return newState;
+
     default:
       return {
         ...state

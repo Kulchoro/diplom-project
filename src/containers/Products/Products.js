@@ -22,25 +22,25 @@ class Products extends Component {
   }
 
   addScoreCart = (id, name, price) => {
-    console.log(id);
     const item = [...this.props.itemsCart];
     item.push({
       name: name,
       price: price,
       id: item.length
     });
+
     this.setState({
       cart: this.state.cart + 1
     });
     this.props.onItemsCartChange(item);
-    console.log(item.length);
   };
+
   render() {
     const addScoreCart = this.addScoreCart;
     let products = this.state.products;
     let result = Object.keys(products).map(function(key) {
       return [
-        <ProductList addScoreCart={addScoreCart}>
+        <ProductList key={[products[key]]}>
           <h3>{products[key].name}</h3>
           <p>
             {[
@@ -60,7 +60,7 @@ class Products extends Component {
         </ProductList>
       ];
     });
-
+    console.log();
     return (
       <div className={classes.Products}>
         <div>
@@ -77,7 +77,8 @@ class Products extends Component {
 
 const mapStateToProps = state => {
   return {
-    itemsCart: state.itemsCart
+    itemsCart: state.itemsCart,
+    price: state.price
   };
 };
 

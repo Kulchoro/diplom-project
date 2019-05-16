@@ -7,7 +7,7 @@ import axios from "../../axios";
 
 class Checkout extends Component {
   state = {
-    products: {},
+    products: [],
     price: 0,
     customer: {
       name: "",
@@ -15,13 +15,12 @@ class Checkout extends Component {
       address: ""
     }
   };
-
   componentWillMount() {
     const query = new URLSearchParams(this.props.location.search);
     const products = {};
     let price = 0;
 
-    // [['ingredient', 'count'], ['price', '0']]
+    // [['product', 'count'], ['price', '0']]
     for (let parameter of query.entries()) {
       if (parameter[0] === "price") {
         price = +parameter[1];
@@ -32,7 +31,6 @@ class Checkout extends Component {
 
     this.setState({ products, price });
   }
-
   submitHandler = () => {
     const order = {
       products: this.state.products,

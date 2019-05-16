@@ -5,27 +5,11 @@ import classes from "./Cart.module.css";
 
 class Cart extends Component {
   state = {
-    products: [],
-    price: 0
+    products: []
   };
 
-  checkoutHandler = () => {
-    const query = [];
-
-    for (let product in this.state.products) {
-      if (this.props.products[product] > 0) {
-        const name = encodeURIComponent(product);
-        const value = encodeURIComponent(this.props.products[product]);
-
-        query.push(`${name}=${value}`);
-      }
-    }
-    query.push(`price=${encodeURIComponent(this.state.price)}`);
-
-    this.props.history.push({
-      pathname: "/checkout",
-      search: `?${query.join("&")}`
-    });
+  cancelHandler = () => {
+    this.props.history.goBack();
   };
 
   del = index => {
@@ -33,6 +17,7 @@ class Cart extends Component {
     array.splice(index, 1);
     this.props.onItemsCartChange(array);
   };
+
   render() {
     let item = this.props.itemsCart.map(item => {
       return (
@@ -48,9 +33,12 @@ class Cart extends Component {
     return (
       <div className={classes.Cart}>
         {item}
+
+        <p>{this.props.price}</p>
         <NavLink to="/checkout">
-          <button onClick={this.checkoutHandler}>Checkout</button>
+          <button>Checkout</button>
         </NavLink>
+        <button onClick={this.cancelHandler}>Cancel</button>
       </div>
     );
   }
@@ -58,7 +46,8 @@ class Cart extends Component {
 
 const mapStateToProps = state => {
   return {
-    itemsCart: state.itemsCart
+    itemsCart: state.itemsCart,
+    price: state.price
   };
 };
 
