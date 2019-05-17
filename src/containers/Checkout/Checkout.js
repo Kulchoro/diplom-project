@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import classes from "./Checkout.module.css";
-
+import { connect } from "react-redux";
 import CheckoutForm from "../../components/Checkout/CheckoutForm/CheckoutForm";
 
 import axios from "../../axios";
@@ -15,25 +15,9 @@ class Checkout extends Component {
       address: ""
     }
   };
-  componentWillMount() {
-    const query = new URLSearchParams(this.props.location.search);
-    const products = {};
-    let price = 0;
 
-    // [['product', 'count'], ['price', '0']]
-    for (let parameter of query.entries()) {
-      if (parameter[0] === "price") {
-        price = +parameter[1];
-      } else {
-        products[parameter[0]] = +parameter[1];
-      }
-    }
-
-    this.setState({ products, price });
-  }
   submitHandler = () => {
     const order = {
-      products: this.state.products,
       price: this.state.price,
       customer: this.state.customer
     };
@@ -78,4 +62,14 @@ class Checkout extends Component {
   }
 }
 
-export default Checkout;
+const mapStateToProps = state => {
+  return {
+    itemsCart: state.itemsCart,
+    price: state.price
+  };
+};
+
+export default connect(
+  null,
+  mapStateToProps
+)(Checkout);

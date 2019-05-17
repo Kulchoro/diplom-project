@@ -4,10 +4,6 @@ import { NavLink } from "react-router-dom";
 import classes from "./Cart.module.css";
 
 class Cart extends Component {
-  state = {
-    products: []
-  };
-
   cancelHandler = () => {
     this.props.history.goBack();
   };
@@ -19,7 +15,11 @@ class Cart extends Component {
   };
 
   render() {
+    let price = 0;
+
     let item = this.props.itemsCart.map(item => {
+      price += item.price;
+
       return (
         <div>
           <h3>{item.name}</h3>
@@ -34,7 +34,7 @@ class Cart extends Component {
       <div className={classes.Cart}>
         {item}
 
-        <p>{this.props.price}</p>
+        <p>Total: {price}</p>
         <NavLink to="/checkout">
           <button>Checkout</button>
         </NavLink>
