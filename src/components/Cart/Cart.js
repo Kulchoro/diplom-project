@@ -35,7 +35,7 @@ class Cart extends Component {
         {item}
 
         <p>Total: {price}</p>
-        <NavLink to="/checkout">
+        <NavLink to="/checkout" price={price}>
           <button>Checkout</button>
         </NavLink>
         <button onClick={this.cancelHandler}>Cancel</button>

@@ -15,9 +15,25 @@ class Checkout extends Component {
       address: ""
     }
   };
+  componentWillMount() {
+    const query = new URLSearchParams(this.props.location.search);
+    const products = {};
+    let price = 0;
 
+    // [['product', 'count'], ['price', '0']]
+    for (let parameter of query.entries()) {
+      if (parameter[0] === "price") {
+        price = +parameter[1];
+      } else {
+        products[parameter[0]] = +parameter[1];
+      }
+    }
+
+    this.setState({ products, price });
+  }
   submitHandler = () => {
     const order = {
+      products: this.state.products,
       price: this.state.price,
       customer: this.state.customer
     };
@@ -28,8 +44,8 @@ class Checkout extends Component {
       order.customer.address.length > 5
     ) {
       axios.post("orders.json", order).then(response => {
-        if (response.status === 0) {
-          this.props.history.replace("/orders");
+        if (response.status === 200) {
+          alert("Your order is accepted");
         }
       });
     } else {

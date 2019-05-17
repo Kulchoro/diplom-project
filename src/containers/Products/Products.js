@@ -9,8 +9,7 @@ import ProductControl from "./ProductControl/ProductControl";
 class Products extends Component {
   state = {
     products: [],
-    cart: 0,
-    itemsCart: []
+    itemsCart: 0
   };
 
   componentDidMount() {
@@ -30,7 +29,7 @@ class Products extends Component {
     });
 
     this.setState({
-      cart: this.state.cart + 1
+      itemsCart: this.state.itemsCart + 1
     });
     this.props.onItemsCartChange(item);
   };
@@ -65,7 +64,7 @@ class Products extends Component {
       <div className={classes.Products}>
         <div>
           <NavLink activeClassName={classes.active} to={"/cart/"}>
-            Cart: {this.state.cart}
+            Cart: {this.state.itemsCart}
           </NavLink>
         </div>
 
