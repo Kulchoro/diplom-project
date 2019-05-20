@@ -34,7 +34,7 @@ class Cart extends Component {
       <div className={classes.Cart}>
         {item}
 
-        <p>Total: {price}</p>
+        <p><strong>Total: {price}</strong></p>
         <NavLink to="/checkout" price={price}>
           <button>Checkout</button>
         </NavLink>
