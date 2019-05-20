@@ -9,7 +9,7 @@ import ProductControl from "./ProductControl/ProductControl";
 class Products extends Component {
   state = {
     products: [],
-    itemsCart: 0
+    itemsCart: this.props.itemsCart.length
   };
 
   componentDidMount() {
@@ -29,7 +29,7 @@ class Products extends Component {
     });
 
     this.setState({
-      itemsCart: this.state.itemsCart + 1
+      itemsCart: item.length
     });
     this.props.onItemsCartChange(item);
   };
