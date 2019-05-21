@@ -22,9 +22,6 @@ function Navigation(props) {
               Contact
             </Link>
           </li>
-          <li>
-            <Link url="/orders">Orders</Link>
-          </li>
         </ul>
       </nav>
     </div>
