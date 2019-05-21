@@ -23,7 +23,9 @@ class Cart extends Component {
       return (
         <div>
           <h3>{item.name}</h3>
-          <p>Price: {item.price}</p>
+          <p>
+            <strong> Price: {item.price}</strong>
+          </p>
           <button>+</button>
           <button>-</button>
           <button value={item.id} onClick={this.del}>
@@ -42,7 +44,7 @@ class Cart extends Component {
         <NavLink to="/checkout" price={price}>
           <button>Checkout</button>
         </NavLink>
-        <button onClick={this.cancelHandler}>Cancel</button>
+        <button onClick={this.cancelHandler}>Back</button>
       </div>
     );
   }

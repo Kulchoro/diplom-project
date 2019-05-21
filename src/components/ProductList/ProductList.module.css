@@ -1,0 +1,8 @@
+.ProductList {
+  padding: 20px;
+  border-radius: 10px;
+  display: inline-block;
+  margin: 10px;
+  width: 50%;
+  box-shadow: 0 0 10px;
+}

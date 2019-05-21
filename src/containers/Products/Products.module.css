@@ -1,4 +1,15 @@
-div {
- margin-bottom: 50px;
-  
+.Products {
+  margin-top: 50px;
+}
+
+.cart {
+  text-align: center;
+}
+
+.active {
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: rgb(43, 226, 217)
 }

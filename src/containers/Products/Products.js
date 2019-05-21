@@ -62,8 +62,8 @@ class Products extends Component {
     console.log();
     return (
       <div className={classes.Products}>
-        <div>
-          <NavLink activeClassName={classes.active} to={"/cart/"}>
+        <div className={classes.cart}>
+          <NavLink className={classes.active} to={"/cart/"}>
             Cart: {this.state.itemsCart}
           </NavLink>
         </div>
