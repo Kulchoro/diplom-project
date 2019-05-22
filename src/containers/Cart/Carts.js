@@ -18,6 +18,7 @@ class Carts extends Component {
   render() {
     return (
       <div className={classes.Cart}>
+        <Cart cart={this.props.itemsCart} />
         <CartControl del={this.del} />
         <NavLink to="/checkout">
           <button>Checkout</button>

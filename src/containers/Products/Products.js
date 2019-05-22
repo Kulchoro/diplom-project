@@ -21,10 +21,11 @@ class Products extends Component {
     });
   }
 
-  addScoreCart = () => {
+  addScoreCart = (name, price, id) => {
     const item = [...this.props.itemsCart];
     item.push({
-      item
+      name: name,
+      price: price
     });
 
     this.setState({
@@ -41,13 +42,13 @@ class Products extends Component {
             Cart: {this.state.itemsCart}
           </NavLink>
         </div>
-        {Object.keys(this.state.products).map(key => (
+        {Object.keys(this.state.products).map(product => (
           <div>
             <ProductList
               addScoreCart={this.addScoreCart}
-              name={this.state.products[key].name}
-              description={this.state.products[key].description}
-              price={this.state.products[key].price}
+              name={this.state.products[product].name}
+              description={this.state.products[product].description}
+              price={this.state.products[product].price}
             />
           </div>
         ))}
