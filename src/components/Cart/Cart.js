@@ -8,9 +8,9 @@ class Cart extends Component {
     this.props.history.goBack();
   };
 
-  del = index => {
+  del = product => {
     let array = [...this.props.itemsCart];
-    array.splice(index, 1);
+    array.splice(product, 1);
     this.props.onItemsCartChange(array);
   };
 
@@ -38,7 +38,7 @@ class Cart extends Component {
       <div className={classes.Cart}>
         {item}
 
-        <p>
+        <p class>
           <strong>Total: {price}</strong>
         </p>
         <NavLink to="/checkout" price={price}>

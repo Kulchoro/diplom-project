@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 
 import ProductList from "../../components/ProductList/ProductList";
-import ProductControl from "./ProductControl/ProductControl";
+
 class Products extends Component {
   state = {
     products: [],
@@ -14,18 +14,17 @@ class Products extends Component {
 
   componentDidMount() {
     axios.get("products.json").then(response => {
+      const products = response.data;
       this.setState({
-        products: response.data
+        products: products
       });
     });
   }
 
-  addScoreCart = (id, name, price) => {
+  addScoreCart = () => {
     const item = [...this.props.itemsCart];
     item.push({
-      name: name,
-      price: price,
-      id: item.length
+      item
     });
 
     this.setState({
@@ -35,31 +34,6 @@ class Products extends Component {
   };
 
   render() {
-    const addScoreCart = this.addScoreCart;
-    let products = this.state.products;
-    let result = Object.keys(products).map(function(key) {
-      return [
-        <ProductList key={[products[key]]}>
-          <h3>{products[key].name}</h3>
-          <p>
-            {[
-              products[key].description,
-              <strong> Price: {products[key].price}</strong>
-            ]}
-          </p>
-          <ProductControl
-            addScoreCart={() =>
-              addScoreCart(
-                products[key].id,
-                products[key].name,
-                products[key].price
-              )
-            }
-          />
-        </ProductList>
-      ];
-    });
-    console.log();
     return (
       <div className={classes.Products}>
         <div className={classes.cart}>
@@ -67,8 +41,16 @@ class Products extends Component {
             Cart: {this.state.itemsCart}
           </NavLink>
         </div>
-
-        <div>{result}</div>
+        {Object.keys(this.state.products).map(key => (
+          <div>
+            <ProductList
+              addScoreCart={this.addScoreCart}
+              name={this.state.products[key].name}
+              description={this.state.products[key].description}
+              price={this.state.products[key].price}
+            />
+          </div>
+        ))}
       </div>
     );
   }
