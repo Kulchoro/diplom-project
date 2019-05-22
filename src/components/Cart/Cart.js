@@ -5,7 +5,7 @@ function Cart(props) {
   return (
     <div className={classes.Cart}>
       {props.cart}
-      <p class>
+      <p>
         <strong>Total: {props.price}</strong>
       </p>
     </div>

@@ -35,9 +35,11 @@ class Carts extends Component {
         </div>
       );
     });
+
     return (
       <div className={classes.Cart}>
-        <Cart price={price} cart={item} />
+        {item}
+        <Cart price={price} />
         <CartControl del={this.del} />
         <NavLink to="/checkout">
           <button>Checkout</button>

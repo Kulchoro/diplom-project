@@ -21,7 +21,7 @@ class Products extends Component {
     });
   }
 
-  addScoreCart = (name, price, id) => {
+  addScoreCart = (id, name, price) => {
     const item = [...this.props.itemsCart];
     item.push({
       name: name,
@@ -32,6 +32,7 @@ class Products extends Component {
       itemsCart: item.length
     });
     this.props.onItemsCartChange(item);
+    console.log(id);
   };
 
   render() {
