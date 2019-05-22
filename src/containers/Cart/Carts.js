@@ -16,9 +16,28 @@ class Carts extends Component {
   };
 
   render() {
+    let price = 0;
+
+    let item = this.props.itemsCart.map(item => {
+      price += item.price;
+
+      return (
+        <div>
+          <h3>{item.name}</h3>
+          <p>
+            <strong> Price: {item.price}</strong>
+          </p>
+          <button>+</button>
+          <button>-</button>
+          <button value={item.id} onClick={this.del}>
+            X
+          </button>
+        </div>
+      );
+    });
     return (
       <div className={classes.Cart}>
-        <Cart cart={this.props.itemsCart} />
+        <Cart price={price} cart={item} />
         <CartControl del={this.del} />
         <NavLink to="/checkout">
           <button>Checkout</button>
