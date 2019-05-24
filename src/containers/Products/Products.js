@@ -3,7 +3,6 @@ import classes from "./Products.module.css";
 import axios from "../../axios";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import ProductControl from "../../containers/Products/ProductControl/ProductControl";
 import ProductList from "../../components/ProductList/ProductList";
 
 class Products extends Component {
@@ -21,10 +20,11 @@ class Products extends Component {
     });
   }
 
-  addScoreCart = (id, name, price) => {
+  addScoreCart = (id, name, description, price) => {
     const item = [...this.props.itemsCart];
     item.push({
       name: name,
+      description: description,
       price: price,
       id: item.length
     });
@@ -53,6 +53,7 @@ class Products extends Component {
                 addScoreCart(
                   products[product].id,
                   products[product].name,
+                  products[product].description,
                   products[product].price
                 )
               }

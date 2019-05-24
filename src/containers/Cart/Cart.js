@@ -20,22 +20,23 @@ class Cart extends Component {
     let item = this.props.itemsCart.map(item => {
       price += item.price;
 
-      return (
+      return [
         <div>
           <h3>{item.name}</h3>
           <p>
+            {item.description}
             <strong> Price: {item.price}</strong>
           </p>
           <button>+</button>
           <button>-</button>
         </div>
-      );
+      ];
     });
     return (
       <div className={classes.Cart}>
         {item}
         <p>
-          <strong>Total: </strong>
+          <strong>Total: {price}</strong>
         </p>
         <CartControl del={this.del} />
         <NavLink to="/checkout">
