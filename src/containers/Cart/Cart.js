@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import classes from "./Cart.module.css";
-import Cart from "../../components/Cart/Cart";
 import CartControl from "../../components/Cart/CartControl/CartControl";
-class Carts extends Component {
+class Cart extends Component {
   cancelHandler = () => {
     this.props.history.goBack();
   };
@@ -29,17 +28,15 @@ class Carts extends Component {
           </p>
           <button>+</button>
           <button>-</button>
-          <button value={item.id} onClick={this.del}>
-            X
-          </button>
         </div>
       );
     });
-
     return (
       <div className={classes.Cart}>
         {item}
-        <Cart price={price} />
+        <p>
+          <strong>Total: </strong>
+        </p>
         <CartControl del={this.del} />
         <NavLink to="/checkout">
           <button>Checkout</button>
@@ -66,4 +63,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Carts);
+)(Cart);

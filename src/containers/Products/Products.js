@@ -38,28 +38,6 @@ class Products extends Component {
   render() {
     const addScoreCart = this.addScoreCart;
     let products = this.state.products;
-    let result = Object.keys(products).map(product => {
-      return [
-        <ProductList key={[products[product]]}>
-          <h3>{products[product].name}</h3>
-          <p>
-            {[
-              products[product].description,
-              <strong> Price: {products[product].price}</strong>
-            ]}
-          </p>
-          <ProductControl
-            addScoreCart={() =>
-              addScoreCart(
-                products[product].id,
-                products[product].name,
-                products[product].price
-              )
-            }
-          />
-        </ProductList>
-      ];
-    });
     console.log();
     return (
       <div className={classes.Products}>
@@ -68,7 +46,23 @@ class Products extends Component {
             Cart: {this.state.itemsCart}
           </NavLink>
         </div>
-        {result}
+        {Object.keys(products).map(product => {
+          return [
+            <ProductList
+              addScoreCart={() =>
+                addScoreCart(
+                  products[product].id,
+                  products[product].name,
+                  products[product].price
+                )
+              }
+              key={products[product].id}
+              name={products[product].name}
+              description={products[product].description}
+              price={products[product].price}
+            />
+          ];
+        })}
       </div>
     );
   }

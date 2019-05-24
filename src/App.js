@@ -4,7 +4,7 @@ import classes from "./App.module.css";
 import Navigation from "./components/Navigation/Navigation";
 import Products from "./containers/Products/Products";
 import About from "./components/About/About";
-import Cart from "./components/Cart/Cart";
+import Carts from "./containers/Cart/Cart";
 import Checkout from "./containers/Checkout/Checkout";
 class App extends Component {
   render() {
@@ -15,7 +15,7 @@ class App extends Component {
           <Route path="/" exact component={About} />
           <Route path="/products" component={Products} />
           <Route path="/checkout" component={Checkout} />
-          <Route path="/cart" component={Cart} />
+          <Route path="/cart" component={Carts} />
         </div>
       </BrowserRouter>
     );
