@@ -26,8 +26,9 @@ class Products extends Component {
       name: name,
       description: description,
       price: price,
-      id: item.length
+      id: id
     });
+
     this.setState({
       itemsCart: item.length
     });
@@ -57,7 +58,7 @@ class Products extends Component {
                   products[product].price
                 )
               }
-              key={products[product].id}
+              key={products.id}
               name={products[product].name}
               description={products[product].description}
               price={products[product].price}

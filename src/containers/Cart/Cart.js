@@ -16,7 +16,6 @@ class Cart extends Component {
 
   render() {
     let price = 0;
-
     let item = this.props.itemsCart.map(item => {
       price += item.price;
 
