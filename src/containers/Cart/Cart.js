@@ -16,6 +16,7 @@ class Cart extends Component {
 
   render() {
     let price = 0;
+
     let item = this.props.itemsCart.map(item => {
       price += item.price;
 
@@ -49,6 +50,7 @@ class Cart extends Component {
 
 const mapStateToProps = state => {
   return {
+    products: state.products,
     itemsCart: state.itemsCart,
     price: state.price
   };
