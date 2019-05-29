@@ -33,7 +33,6 @@ class Products extends Component {
       itemsCart: item.length
     });
     this.props.onItemsCartChange(item);
-    console.log(id);
   };
 
   render() {
