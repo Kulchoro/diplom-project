@@ -14,7 +14,11 @@ class Cart extends Component {
     array.map(obj => {
       if (obj.id === event.target.value) {
         obj.unique = obj.unique + 1;
-        console.log(obj.unique, array);
+        if (obj.unique === 10) {
+          event.target.disabled = true;
+        } else {
+          event.target.disabled = false;
+        }
       }
     });
 
@@ -26,7 +30,6 @@ class Cart extends Component {
     array.map(obj => {
       if (obj.id === event.target.value) {
         obj.unique = obj.unique - 1;
-        console.log(obj.unique, array);
         if (obj.unique === 0) {
           array.splice(obj, 1);
         }
@@ -37,9 +40,7 @@ class Cart extends Component {
   };
 
   render() {
-    let price = 0;
     let item = this.props.itemsCart.map(item => {
-      price += item.price;
       return [
         <div>
           <h3>
@@ -55,15 +56,16 @@ class Cart extends Component {
           <button onClick={this.lessProduct} value={item.id}>
             -
           </button>
+          <p>
+            <strong>Total: {item.price}</strong>
+          </p>
         </div>
       ];
     });
     return (
       <div className={classes.Cart}>
         {item}
-        <p>
-          <strong>Total: {price}</strong>
-        </p>
+
         <CartControl del={this.del} />
         <NavLink to="/checkout">
           <button>Checkout</button>
