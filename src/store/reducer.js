@@ -20,7 +20,6 @@ const reducer = (state = initialState, action) => {
         ...state,
         price: action.value
       };
-
     default:
       return {
         ...state
