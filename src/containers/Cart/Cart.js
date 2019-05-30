@@ -11,10 +11,10 @@ class Cart extends Component {
   addProducts = event => {
     let array = [...this.props.itemsCart];
 
-    array.map(obj => {
-      if (obj.id === event.target.value) {
-        obj.unique = obj.unique + 1;
-        if (obj.unique === 10) {
+    array.map(product => {
+      if (product.id === event.target.value) {
+        product.unique = product.unique + 1;
+        if (product.unique === 10) {
           event.target.disabled = true;
         } else {
           event.target.disabled = false;
@@ -27,11 +27,11 @@ class Cart extends Component {
   lessProduct = event => {
     let array = [...this.props.itemsCart];
 
-    array.map(obj => {
-      if (obj.id === event.target.value) {
-        obj.unique = obj.unique - 1;
-        if (obj.unique === 0) {
-          array.splice(obj, 1);
+    array.map(product => {
+      if (product.id === event.target.value) {
+        product.unique = product.unique - 1;
+        if (product.unique === 0) {
+          array.splice(product, 1);
         }
       }
     });
