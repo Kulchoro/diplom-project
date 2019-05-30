@@ -8,12 +8,6 @@ class Cart extends Component {
     this.props.history.goBack();
   };
 
-  del = product => {
-    let array = [...this.props.itemsCart];
-    array.splice(product, 1);
-    this.props.onItemsCartChange(array);
-  };
-
   addProducts = event => {
     let array = [...this.props.itemsCart];
 
@@ -26,6 +20,22 @@ class Cart extends Component {
 
     this.props.onItemsCartChange(array);
   };
+  lessProduct = event => {
+    let array = [...this.props.itemsCart];
+
+    array.map(obj => {
+      if (obj.id === event.target.value) {
+        obj.unique = obj.unique - 1;
+        console.log(obj.unique, array);
+        if (obj.unique === 0) {
+          array.splice(obj, 1);
+        }
+      }
+    });
+
+    this.props.onItemsCartChange(array);
+  };
+
   render() {
     let price = 0;
     let item = this.props.itemsCart.map(item => {
@@ -42,7 +52,9 @@ class Cart extends Component {
           <button onClick={this.addProducts} value={item.id}>
             +
           </button>
-          <button>-</button>
+          <button onClick={this.lessProduct} value={item.id}>
+            -
+          </button>
         </div>
       ];
     });
