@@ -29,7 +29,7 @@ class Products extends Component {
       id: id,
       unique: 1
     });
-
+    alert("Product added in cart");
     this.setState({
       itemsCart: item.length
     });
