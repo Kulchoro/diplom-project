@@ -1,8 +1,18 @@
 .ProductList {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 20px;
   border-radius: 10px;
   display: inline-block;
   margin: 10px;
   width: 30%;
   box-shadow: 0 0 10px;
+}
+
+h3 {
+  text-align: center;
+}
+
+strong {
+  color: rgb(197, 55, 55);
+  text-decoration: underline;
 }
