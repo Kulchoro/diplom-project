@@ -7,8 +7,6 @@ import axios from "../../axios";
 
 class Checkout extends Component {
   state = {
-    products: [],
-    price: 0,
     customer: {
       name: "",
       phone: "",
@@ -33,8 +31,8 @@ class Checkout extends Component {
   }
   submitHandler = () => {
     const order = {
-      products: this.state.products,
-      price: this.state.price,
+      products: this.props.products,
+      price: this.props.price,
       customer: this.state.customer
     };
 
@@ -80,6 +78,7 @@ class Checkout extends Component {
 
 const mapStateToProps = state => {
   return {
+    products: state.products,
     itemsCart: state.itemsCart,
     price: state.price
   };
