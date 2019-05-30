@@ -26,7 +26,8 @@ class Products extends Component {
       name: name,
       description: description,
       price: price,
-      id: id
+      id: id,
+      unique: 0
     });
 
     this.setState({
