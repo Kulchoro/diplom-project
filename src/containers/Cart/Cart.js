@@ -14,20 +14,34 @@ class Cart extends Component {
     this.props.onItemsCartChange(array);
   };
 
+  addProducts = event => {
+    let array = [...this.props.itemsCart];
+
+    array.map(obj => {
+      if (obj.id === event.target.value) {
+        obj.unique = obj.unique + 1;
+        console.log(obj.unique, array);
+      }
+    });
+
+    this.props.onItemsCartChange(array);
+  };
   render() {
     let price = 0;
-
     let item = this.props.itemsCart.map(item => {
       price += item.price;
-
       return [
         <div>
-          <h3>{item.name}</h3>
+          <h3>
+            {item.name} <small>({item.unique})</small>
+          </h3>
           <p>
             {item.description}
             <strong> Price: {item.price}</strong>
           </p>
-          <button>+</button>
+          <button onClick={this.addProducts} value={item.id}>
+            +
+          </button>
           <button>-</button>
         </div>
       ];
