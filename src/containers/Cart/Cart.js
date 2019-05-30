@@ -44,7 +44,7 @@ class Cart extends Component {
       return [
         <div>
           <h3>
-            {item.name} <small>({item.unique})</small>
+            {item.name} <small>(Score: {item.unique})</small>
           </h3>
           <p>
             {item.description}
